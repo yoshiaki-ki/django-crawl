@@ -1,0 +1,19 @@
+<html>
+
+<head>
+  <title>記事リスト</title>
+</head>
+
+<body>
+  <h1>記事リスト</h1>
+  {% for article in articles %}
+  <p>{{ article.company_name.company_name }}</p>
+  <p>{{ article.title }}</p>
+  <p>{{ article.release_time }}</p>
+  <p>{{ article.is_technology }}</p>
+  <p>{{ article.is_mobile }}</p>
+  <p>{{ article.is_app }}</p>
+  {% endfor %}
+</body>
+
+</html>
