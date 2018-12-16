@@ -1,0 +1,48 @@
+{% extends 'crawlApp/index.html' %}
+
+{% block content %}
+<h1 class="m-3">企業リスト</h1>
+
+<div class="input-group">
+  <input type="text" class="form-control">
+  <div class="input-group-prepend">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">業種</button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+    </div>
+  </div>
+</div>
+
+<table class="table table-borderless m-2">
+  <thead class="thead-light">
+    <tr>
+      <th>企業名</th>
+      <th>住所</th>
+      <th>業種</th>
+      <th>電話番号</th>
+      <th>代表者</th>
+      <th>上場</th>
+      <th>資本金</th>
+      <th>PRtimes HP</th>
+      <th>公式HP</th>
+    </tr>
+  </thead>
+  {% for company_info in companyinfo_list %}
+  <tbody>
+    <tr>
+      <th>{{ company_info.company_name }}</th>
+      <th>{{ company_info.address }}</th>
+      <th>{{ company_info.category }}</th>
+      <th>{{ company_info.tel_number }}</th>
+      <th>{{ company_info.CEO }}</th>
+      <th>{{ company_info.jojo }}</th>
+      <th>{{ company_info.fund }}</th>
+      <th><a href="{{ company_info.PRtimes_URL }}">リンク</a></th>
+      <th><a href="{{ company_info.official_URL }}">リンク</a></th>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}

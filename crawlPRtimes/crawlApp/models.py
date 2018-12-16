@@ -16,7 +16,7 @@ class CompanyInfo(models.Model):
 
 
 class Article(models.Model):
-    company_name = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE)
+    company_id = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
     release_time = models.DateTimeField()
     is_technology = models.BooleanField(default=False)
@@ -32,4 +32,5 @@ class Article(models.Model):
 
 
 class Client(models.Model):
+    company_id = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=30)

@@ -1,0 +1,25 @@
+{% extends 'crawlApp/index.html' %}
+
+{% block content %}
+<h1 class="m-3">記事リスト</h1>
+
+<table class="table table-borderless m-2">
+  <thead class="thead-light">
+    <tr>
+      <th>記事タイトル</th>
+      <th>リリース時間</th>
+      <th>企業名</th>
+    </tr>
+  </thead>
+  {% for article in article_list %}
+  <tbody>
+    <tr>
+      <th>{{ article.title }}</th>
+      <th>{{ article.release_time }}</th>
+      <th>{{ article.company_id.company_name }}</th>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}
