@@ -14,7 +14,7 @@
   {% for article in article_list %}
   <tbody>
     <tr>
-      <th>{{ article.title }}</th>
+      <th><a href="{{ article.article_url }}">{{ article.title }}</th>
       <th>{{ article.release_time }}</th>
       <th>{{ article.company_id.company_name }}</th>
     </tr>

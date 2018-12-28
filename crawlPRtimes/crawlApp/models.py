@@ -3,21 +3,27 @@ from django.utils import timezone
 
 
 class CompanyInfo(models.Model):
-    company_name = models.CharField(max_length=30)
+    company_name = models.CharField(max_length=100)
     PRtimes_URL = models.URLField()
-    official_URL = models.URLField()
-    category = models.CharField(max_length=20)
-    address = models.CharField(max_length=50)
-    tel_number = models.IntegerField()
-    CEO = models.CharField(max_length=20)
-    jojo = models.CharField(max_length=20)
-    fund = models.CharField(max_length=20)
+    official_URL = models.URLField(null=True)
+    category = models.CharField(max_length=20, null=True)
+    address = models.CharField(max_length=50, null=True)
+    tel_number = models.IntegerField(null=True)
+    CEO = models.CharField(max_length=20, null=True)
+    jojo = models.CharField(max_length=20, null=True)
+    fund = models.CharField(max_length=20, null=True)
     is_client = models.BooleanField(default=False)
+
+    def crawl_companyinfo(self):
+        print("処理を実行しました")
+        #企業情報クローリング処理を記載
+
 
 
 class Article(models.Model):
     company_id = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
+    article_url = models.URLField(null=True)
     release_time = models.DateTimeField()
     is_technology = models.BooleanField(default=False)
     is_mobile = models.BooleanField(default=False)
