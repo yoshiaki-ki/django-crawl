@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
     # path('articles', views.query, name='query'),
+    path('', views.index, name='top'),
     path('company', views.CompanyInfoIndexView.as_view(), name='companyinfo_list'),
     path('article', views.ArticleIndexView.as_view(), name='article'),
 ]
