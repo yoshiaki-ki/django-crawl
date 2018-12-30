@@ -7,11 +7,11 @@ class CompanyInfo(models.Model):
     PRtimes_URL = models.URLField()
     official_URL = models.URLField(null=True)
     category = models.CharField(max_length=20, null=True)
-    address = models.CharField(max_length=50, null=True)
-    tel_number = models.IntegerField(null=True)
-    CEO = models.CharField(max_length=20, null=True)
-    jojo = models.CharField(max_length=20, null=True)
-    fund = models.CharField(max_length=20, null=True)
+    address = models.CharField(max_length=100, null=True)
+    tel_number = models.CharField(max_length=100, null=True)
+    CEO = models.CharField(max_length=100, null=True)
+    jojo = models.CharField(max_length=100, null=True)
+    fund = models.CharField(max_length=100, null=True)
     is_client = models.BooleanField(default=False)
 
     def crawl_companyinfo(self):

@@ -12,7 +12,9 @@ def index(request):
 
 class CompanyInfoIndexView(generic.ListView):
     model = CompanyInfo
+    paginate_by = 20
 
 
 class ArticleIndexView(generic.ListView):
     model = Article
+    paginate_by = 20
