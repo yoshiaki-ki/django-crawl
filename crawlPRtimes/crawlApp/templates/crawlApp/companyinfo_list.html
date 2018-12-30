@@ -4,7 +4,10 @@
 <h1 class="m-3">企業リスト</h1>
 
 <div class="input-group">
-  <input type="text" class="form-control">
+  <form class="form-inline" method="GET" action="{% url 'companyinfo_list' %}">
+    <input type="text" class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
+    </form>
+
   <div class="input-group-prepend">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">業種</button>
     <div class="dropdown-menu">
@@ -46,4 +49,5 @@
 </table>
 
 {% include 'crawlApp/pagination.html' %}
+
 {% endblock %}

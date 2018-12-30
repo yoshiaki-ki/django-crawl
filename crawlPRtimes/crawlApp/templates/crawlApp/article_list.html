@@ -3,6 +3,10 @@
 {% block content %}
 <h1 class="m-3">記事リスト</h1>
 
+<form class="form-inline" method="GET" action="{% url 'article_list' %}">
+  <input type="text" class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
+  </form>
+
 <table class="table table-borderless m-2">
   <thead class="thead-light">
     <tr>

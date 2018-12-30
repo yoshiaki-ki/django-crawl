@@ -40,3 +40,16 @@ class Article(models.Model):
 class Client(models.Model):
     company_id = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=30)
+
+
+class Category(models.Model):
+    technology = models.CharField(max_length=30)
+    mobile = models.CharField(max_length=30)
+    app = models.CharField(max_length=30)
+    entertainment = models.CharField(max_length=30)
+    beauty = models.CharField(max_length=30)
+    fashion = models.CharField(max_length=30)
+    lifestyle = models.CharField(max_length=30)
+    business = models.CharField(max_length=30)
+    gourmet = models.CharField(max_length=30)
+    sports = models.CharField(max_length=30)
