@@ -1,6 +1,6 @@
 from rest_framework import viewsets, filters, routers
-from .models import CompanyInfo, Article, Client
-from .serializer import CompanyInfoSerializer, ArticleSerializer, ClientSerializer
+from .models import CompanyInfo, Article, Client, Tag
+from .serializer import CompanyInfoSerializer, ArticleSerializer, ClientSerializer, TagSerializer
 
 
 class CompanyInfoViewSet(viewsets.ModelViewSet):
@@ -18,7 +18,12 @@ class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
 
 
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
 router = routers.DefaultRouter()
 router.register(r'company_info', CompanyInfoViewSet)
 router.register(r'articles', ArticleViewSet)
 router.register(r'client', ClientViewSet)
+router.register(r'tag', TagViewSet)

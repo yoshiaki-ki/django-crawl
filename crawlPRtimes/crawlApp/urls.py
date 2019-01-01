@@ -11,4 +11,5 @@ urlpatterns = [
     path('', views.index, name='top'),
     path('company', views.CompanyInfoIndexView.as_view(), name='companyinfo_list'),
     path('article', views.ArticleIndexView.as_view(), name='article_list'),
+    path('tag/<tag>/', views.TagView.as_view(), name='tag'),
 ]

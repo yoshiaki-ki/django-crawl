@@ -19,37 +19,26 @@ class CompanyInfo(models.Model):
         #企業情報クローリング処理を記載
 
 
+class Tag(models.Model):
+    name = models.CharField("タグ名", max_length=255)
+    created_at = models.DateTimeField("作成日", auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    # def get_latest_post(self):
+    #     queryset = Article.objects.filter(tag=self)
+    #     return _get_latest_post(queryset)
+
 
 class Article(models.Model):
     company_id = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
     article_url = models.URLField(null=True)
     release_time = models.DateTimeField()
-    is_technology = models.BooleanField(default=False)
-    is_mobile = models.BooleanField(default=False)
-    is_app = models.BooleanField(default=False)
-    is_entertainment = models.BooleanField(default=False)
-    is_beauty = models.BooleanField(default=False)
-    is_fashion = models.BooleanField(default=False)
-    is_lifestyle = models.BooleanField(default=False)
-    is_business = models.BooleanField(default=False)
-    is_gourmet = models.BooleanField(default=False)
-    is_sports = models.BooleanField(default=False)
+    tag = models.ManyToManyField(Tag, blank=True, verbose_name="ジャンルタグ")
 
 
 class Client(models.Model):
     company_id = models.ForeignKey(CompanyInfo, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=30)
-
-
-class Category(models.Model):
-    technology = models.CharField(max_length=30)
-    mobile = models.CharField(max_length=30)
-    app = models.CharField(max_length=30)
-    entertainment = models.CharField(max_length=30)
-    beauty = models.CharField(max_length=30)
-    fashion = models.CharField(max_length=30)
-    lifestyle = models.CharField(max_length=30)
-    business = models.CharField(max_length=30)
-    gourmet = models.CharField(max_length=30)
-    sports = models.CharField(max_length=30)

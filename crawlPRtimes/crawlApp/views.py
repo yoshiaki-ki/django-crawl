@@ -3,7 +3,7 @@ from django.db.models import Q
 import django_filters
 from django.views import generic
 from django.shortcuts import render
-from .models import CompanyInfo, Article, Client, Category
+from .models import CompanyInfo, Article, Client, Tag
 
 
 def index(request):
@@ -36,4 +36,18 @@ class ArticleIndexView(generic.ListView):
             queryset = queryset.filter(
                 Q(title__icontains=keyword)
             )
+        return queryset
+
+
+class TagView(generic.ListView):
+    paginate_by = 20
+    model = Tag
+
+    def base_queryset(self):
+        queryset = Article.objects.all().order_by('-release_time')
+        return queryset
+
+    def get_queryset(self):
+        tag = self.kwargs["tag"]
+        queryset = self.base_queryset().filter(tag__name=tag)
         return queryset

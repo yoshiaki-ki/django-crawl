@@ -12,7 +12,7 @@ from selenium.webdriver.common.keys import Keys  # 文字を入力する時に�
 from time import sleep   # 新しくインポート
 import datetime
 
-from ...models import Article, CompanyInfo
+from ...models import Article, CompanyInfo, Tag
 
 
 class Command(BaseCommand):
@@ -94,7 +94,6 @@ class Command(BaseCommand):
             for article_obj in all_article_obj:
                 all_article_titles.append(article_obj.title)
 
-
             # 記事の保存
             for article in data_list:
                 # data_company_id = data['company_id']
@@ -103,6 +102,7 @@ class Command(BaseCommand):
                 article_url = article['link']
                 company = article['company']
                 company_url = article['company_link']
+                tag = Tag.objects.get(name=genre)
                 # is_genre = 'is_{}'.format(genre)
 
                 # 企業名を保存
@@ -124,7 +124,10 @@ class Command(BaseCommand):
                                 release_time=article_release_time,
                                 )
                     a.save()
-
+                    a.tag.add(tag)
+                else:
+                    a = Article.objects.get(title=article_title)
+                    a.tag.add(tag)
 
 
             print("Article記事　保存完了:ジャンル={}".format(genre))

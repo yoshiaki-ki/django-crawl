@@ -3,23 +3,29 @@
 {% block content %}
 <h1 class="m-3">記事リスト</h1>
 
-<form class="form-inline" method="GET" action="{% url 'article_list' %}">
-  <input type="text" class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
+<div class="">
+  <form class="form-inline" method="GET" action="{% url 'article_list' %}">
+    <input type="text" class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
   </form>
 
-<div class="row">
-  <table class="table table-borderless m-2">
-    <thead class="thead-light">
-      <tr>
-        <th class="col">記事タイトル</th>
-        <th class="col">リリース時間</th>
-        <th class="col">企業名</th>
-      </tr>
-    </thead>
-    {% for article in article_list %}
-    <tbody>
-      <tr>
-        <td class="col"><a href="{{ article.article_url }}">{{ article.title }}</td>
+    {% for tag in tags %}
+      <a class="" href="{% url 'tag' tag.name %}">&nbsp;{{ tag.name }}&nbsp;</a>
+    {% endfor %}
+</div>
+
+  <div class="row">
+    <table class="table table-borderless m-2">
+      <thead class="thead-light">
+        <tr>
+          <th class="col">記事タイトル</th>
+          <th class="col">リリース時間</th>
+          <th class="col">企業名</th>
+        </tr>
+      </thead>
+      {% for article in article_list %}
+      <tbody>
+        <tr>
+          <td class="col"><a href="{{ article.article_url }}">{{ article.title }}</td>
         <td class="col">{{ article.release_time }}</td>
         <td class="col">{{ article.company_id.company_name }}</td>
       </tr>
