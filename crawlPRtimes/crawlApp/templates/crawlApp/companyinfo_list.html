@@ -17,37 +17,40 @@
   </div>
 </div>
 
-<table class="table table-borderless m-2">
-  <thead class="thead-light">
-    <tr>
-      <th>企業名</th>
-      <th>住所</th>
-      <th>業種</th>
-      <th>電話番号</th>
-      <th>代表者</th>
-      <th>上場</th>
-      <th>資本金</th>
-      <th>PRtimes HP</th>
-      <th>公式HP</th>
-    </tr>
-  </thead>
-  {% for company_info in companyinfo_list %}
-  <tbody>
-    <tr>
-      <th>{{ company_info.company_name }}</th>
-      <th>{{ company_info.address }}</th>
-      <th>{{ company_info.category }}</th>
-      <th>{{ company_info.tel_number }}</th>
-      <th>{{ company_info.CEO }}</th>
-      <th>{{ company_info.jojo }}</th>
-      <th>{{ company_info.fund }}</th>
-      <th><a href="{{ company_info.PRtimes_URL }}">リンク</a></th>
-      <th><a href="{{ company_info.official_URL }}">リンク</a></th>
-    </tr>
-  </tbody>
-  {% endfor %}
-</table>
+<div class="table-responsive row">
+  <table class="table table-borderless m-2">
+    <thead class="thead-light">
+      <tr>
+        <th class="col-2">企業名</th>
+        <th class="col-2">住所</th>
+        <th class="col-1">業種</th>
+        <th class="col-2">電話番号</th>
+        <th class="col-1">代表者</th>
+        <th class="col-1">上場</th>
+        <th class="col-1">資本金</th>
+        <th class="col-1">PRtimes HP</th>
+        <th class="col-1">公式HP</th>
+      </tr>
+    </thead>
+    {% for company_info in companyinfo_list %}
+    <tbody>
+      <tr>
+        <td>{{ company_info.company_name }}</td>
+        <td>{{ company_info.address }}</td>
+        <td>{{ company_info.category }}</td>
+        <td>{{ company_info.tel_number }}</td>
+        <td>{{ company_info.CEO }}</td>
+        <td>{{ company_info.jojo }}</td>
+        <td>{{ company_info.fund }}</td>
+        <td><a href="{{ company_info.PRtimes_URL }}">リンク</a></td>
+        <td><a href="{{ company_info.official_URL }}">リンク</a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
 
-{% include 'crawlApp/pagination.html' %}
+</div>
+
+{% include 'crawlApp/pagination_companyinfo_list.html' %}
 
 {% endblock %}
