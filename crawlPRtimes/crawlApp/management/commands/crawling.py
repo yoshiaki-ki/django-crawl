@@ -26,7 +26,7 @@ class Command(BaseCommand):
             print(genre)
             page = 1
 
-            driver = webdriver.PhantomJS()  # PhantomJSを使う
+            driver = webdriver.PhantomJS(executable_path="/usr/local/bin/phantomjs")  # PhantomJSを使う
             driver.set_window_size(1124, 850)  # PhantomJSのサイズを指定する
             # 指定した要素などがなかった場合出てくるまでdriverが最大20秒まで自動待機してくれる
             driver.implicitly_wait(20)

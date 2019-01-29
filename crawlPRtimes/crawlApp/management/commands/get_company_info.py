@@ -23,7 +23,7 @@ class Command(BaseCommand):
             url = company_obj.PRtimes_URL
             # url = request.args.get('url')
 
-            driver = webdriver.PhantomJS()  # PhantomJSを使う
+            driver = webdriver.PhantomJS(executable_path="/usr/local/bin/phantomjs")  # PhantomJSを使う
             driver.get(url)  # URLにアクセスする
             data_list = []  # 全ページのデータを集める配列
 
@@ -46,7 +46,7 @@ class Command(BaseCommand):
             sleep(3)  # 3秒待ち
             num += 1
 
-            print("{}:情報取得完了".format(company_obj.company_name))
+            print("企業情報取得完了")
 
             if num == 10:
                 break

@@ -91,17 +91,11 @@ WSGI_APPLICATION = 'crawlPRtimes.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'crawl_PRtimes',   #　作成したデータベース名
-        # 'USER': 'root',   # ログインユーザー名
-        # 'HOST': '',
-        # 'PORT': '',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['RDS_DB_NAME'],
-        'USER': os.environ['RDS_USERNAME'],
-        'PASSWORD': os.environ['RDS_PASSWORD'],
-        'HOST': os.environ['RDS_HOSTNAME'],
-        'PORT': os.environ['RDS_PORT'],
+        'NAME': 'crawl_PRtimes',   #　作成したデータベース名
+        'USER': 'root',   # ログインユーザー名
+        'HOST': '',
+        'PORT': '',
     }
 }
 
