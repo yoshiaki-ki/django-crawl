@@ -9,38 +9,57 @@
     </form>
 </div>
 
-<div class="table-responsive row">
-  <table class="table table-borderless m-2">
-    <thead class="thead-light">
-      <tr>
-        <th class="col-2">企業名</th>
-        <th class="col-2">住所</th>
-        <th class="col-1">業種</th>
-        <th class="col-2">電話番号</th>
-        <th class="col-1">代表者</th>
-        <th class="col-1">上場</th>
-        <th class="col-1">資本金</th>
-        <th class="col-1">PRtimes HP</th>
-        <th class="col-1">公式HP</th>
-      </tr>
-    </thead>
+<div class="container">
+  <div class="row my-5">
+    <div class="card w-100">
+      <div class="card-header">
+        企業リスト
+      </div>
+    </div>
     {% for company_info in companyinfo_list %}
-    <tbody>
-      <tr>
-        <td>{{ company_info.company_name }}</td>
-        <td>{{ company_info.address }}</td>
-        <td>{{ company_info.category }}</td>
-        <td>{{ company_info.tel_number }}</td>
-        <td>{{ company_info.CEO }}</td>
-        <td>{{ company_info.jojo }}</td>
-        <td>{{ company_info.fund }}</td>
-        <td><a href="{{ company_info.PRtimes_URL }}">リンク</a></td>
-        <td><a href="{{ company_info.official_URL }}">リンク</a></td>
-      </tr>
-    </tbody>
-    {% endfor %}
-  </table>
+    <div class="card w-100">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{{ company_info.official_URL }}">{{ company_info.company_name }}</a></h5>
+        <div class="">
+          <span class="glyphicon glyphicon-time"></span>
+          <span class="card-subtitle mr-5 text-muted">
+    <i class="fas fa-map-marker-alt"></i>
+  {{ company_info.address }}
+</span>
+          <span class="card-subtitle mr-5 text-muted">
+  <i class="fas fa-phone"></i>
+{{ company_info.tel_number }}
+</span>
+        </div>
+        <div class="">
+          <span class="card-text mr-5">
+          <i class="fas fa-tag"></i>
+        {{ company_info.category }}
+      </span>
+          <span class="card-text mr-5">
+        <i class="fas fa-user-alt"></i>
+      {{ company_info.CEO }}
+    </span>
+          <span class="card-text mr-5">
+<i class="fas fa-globe"></i>
+    {{ company_info.jojo }}
+  </span>
+          <span class="card-text mr-5">
+    <i class="fas fa-yen-sign"></i>
+  {{ company_info.fund }}
+</span>
+          <span class="card-text mr-5">
+  <i class="fas fa-desktop"></i>
+  <a href="{{ company_info.PRtimes_URL }}">
+PR times HP
+</a>
+</span>
+        </div>
 
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% include 'crawlApp/pagination_companyinfo_list.html' %}

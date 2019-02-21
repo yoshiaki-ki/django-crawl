@@ -3,35 +3,38 @@
 {% block content %}
 <h1 class="m-3">記事リスト</h1>
 
-<div class="">
+<div class="my-3">
   <form class="form-inline" method="GET" action="{% url 'article_list' %}">
     <input type="text" class="form-control" type="text" placeholder="Search" aria-label="Search" name="keyword">
   </form>
 
     {% for tag in tags %}
-      <a class="" href="{% url 'tag' tag.name %}">&nbsp;{{ tag.name }}&nbsp;</a>
+    <a class="" href="{% url 'tag' tag.name %}">&nbsp;{{ tag.name }}&nbsp;</a>
     {% endfor %}
 </div>
 
-  <div class="row">
-    <table class="table table-borderless m-2">
-      <thead class="thead-light">
-        <tr>
-          <th class="col">記事タイトル</th>
-          <th class="col">リリース時間</th>
-          <th class="col">企業名</th>
-        </tr>
-      </thead>
-      {% for article in article_list %}
-      <tbody>
-        <tr>
-          <td class="col"><a href="{{ article.article_url }}">{{ article.title }}</td>
-        <td class="col">{{ article.release_time }}</td>
-        <td class="col">{{ article.company_id.company_name }}</td>
-      </tr>
-    </tbody>
-    {% endfor %}
-  </table>
+<div class="row mb-5">
+  <div class="card w-100">
+    <div class="card-header">
+      記事タイトル
+    </div>
+  </div>
+  {% for article in article_list %}
+  <div class="card w-100">
+    <div class="card-body">
+      <h5 class="card-title"><a href="{{ article.article_url }}">{{ article.title }}</a></h5>
+      <span class="glyphicon glyphicon-time"></span>
+      <span class="card-subtitle mb-2 text-muted">
+        <i class="fas fa-clock"></i>
+          {{ article.release_time }}
+        </span>
+      <span class="card-text ml-3">
+        <i class="fas fa-building"></i>
+          {{ article.company_id.company_name }}
+        </span>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 
 {% include 'crawlApp/pagination_article_list.html' %}
