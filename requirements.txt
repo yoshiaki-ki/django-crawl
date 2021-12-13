@@ -23,7 +23,7 @@ docutils==0.14
 idna==2.6
 jmespath==0.9.3
 jsonschema==2.6.0
-lxml==4.2.5
+lxml==4.6.5
 pathspec==0.5.5
 pycparser==2.19
 PyMySQL==0.9.2
